@@ -11,14 +11,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.time.Period;
 
 /**
  *
  * @author alexo
  */
-@WebServlet(name = "NewServlet", urlPatterns = {"/Alexsandro.html"})
+@WebServlet(name = "NewServlet", urlPatterns = {"/AlexsandroServlet.html"})
 public class NewServlet extends HttpServlet {
+    
+    LocalDate hoje = LocalDate.now();
+    LocalDate nascimento = LocalDate.of(2002, 10, 14);
+    Period idade = Period.between(nascimento, hoje);
 
+    
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,7 +41,7 @@ public class NewServlet extends HttpServlet {
             out.println("<h2><a href='index.html'>voltar</a></h2>");
             out.println("<h1>1290482322018</h1>");
             out.println("<h2>Alexsandro Alves</h2>");
-            out.println("<h2>22 anos</h2>");
+            out.println("<h2>" + idade.getYears() + " anos</h2>");
             out.println("</html>");
         }
     }
